@@ -1,0 +1,241 @@
+﻿@model FHRealEstate.Models.PropertyModel
+
+@{
+    ViewData["Title"] = "GetProperty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="listing-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-xl-8">
+                <div class="single_property_title mt30-767">
+                    <h2>@Model.Title</h2>
+                    <p>@Model.Address</p>
+                </div>
+            </div>
+            <div class="col-lg-5 col-xl-4">
+                <div class="single_property_social_share mt20">
+                    <div class="spss float-left fn-400">
+                        <ul class="mb0">
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-share"></span></a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-printer"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="price text-right tal-400">
+                        <h2>Rs.13,000<small>/mo</small></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="listing-title-area p0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 p0">
+                <div class="listing_single_property_slider">
+                    @foreach (var x in Model.PropertyImages)
+                    {
+                        <div class="item">
+                            <img class="img-fluid" src="~/userfiles/@x" alt="@x">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sticky_heading h60 p0">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="sticky-nav-tabs">
+                    <ul class="sticky-nav-tabs-container">
+                        <li class="list-inline-item nav-item active"><a class="sticky-nav-tab" href="#tab-1">Details</a></li>
+                        <li class="list-inline-item nav-item"><a class="sticky-nav-tab" href="#tab-2">Features</a></li>
+                        <li class="list-inline-item nav-item"><a class="sticky-nav-tab" href="#tab-3">Locations</a></li>
+                        <li class="list-inline-item nav-item"><a class="sticky-nav-tab" href="#tab-4">Plans</a></li>
+                        <li class="list-inline-item nav-item"><a class="sticky-nav-tab" href="#tab-5">Video</a></li>
+                        <li class="list-inline-item nav-item"><a class="sticky-nav-tab" href="#tab-6">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="our-listing-single bgc-f7 pb30-991">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8 mt35">
+                <div class="row">
+                    <div id="tab-1" class="col-lg-12">
+                        <div class="listing_single_description">
+                            <div class="lsd_list">
+                                <ul class="mb0">
+                                    <li class="list-inline-item"><a href="#">Apartment</a></li>
+                                    <li class="list-inline-item"><a href="#">Beds: @Model.TotalRooms </a></li>
+                                    <li class="list-inline-item"><a href="#">Baths: @Model.TotalBathrooms </a></li>
+                                    <li class="list-inline-item"><a href="#">@Model.PropertySizePrefix : @Model.PropertySize  </a></li>
+                                </ul>
+                            </div>
+                            <h4 class="mb30">Description</h4>
+                            <p class="mb25">Evans Tower very high demand corner junior one bedroom plus a large balcony boasting full open NYC views. You need to see the views to believe them. Mint condition with new hardwood floors. Lots of closets plus washer and dryer.</p>
+                            <p class="gpara second_para white_goverlay mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
+                                    <p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
+                                </div>
+                            </div>
+                            <p class="overlay_close">
+                                <a class="text-thm fz14" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Show More <span class="flaticon-download-1 fz12"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="additional_details">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="mb15">Property Details</h4>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <ul class="list-inline-item">
+                                        <li><p>Property ID :</p></li>
+                                        <li><p>Min Price :</p></li>
+                                        <li><p>Max Price :</p></li>
+                                        <li><p>Property Size :</p></li>
+                                        <li><p>Year Built :</p></li>
+                                    </ul>
+                                    <ul class="list-inline-item">
+                                        <li><p><span>HZ27</span></p></li>
+                                        <li><p><span>@Model.MinPriceStr</span></p></li>
+                                        <li><p><span>@Model.MaxPriceStr</span></p></li>
+                                        <li><p><span>@Model.PropertySize @Model.PropertySizePrefix</span></p></li>
+                                        <li><p><span>2016-01-09</span></p></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <ul class="list-inline-item">
+                                        <li><p>Bedrooms :</p></li>
+                                        <li><p>Bathrooms :</p></li>
+                                        <li><p>Garage :</p></li>
+                                        <li><p>Garage Size :</p></li>
+                                    </ul>
+                                    <ul class="list-inline-item">
+                                        <li><p><span>@Model.TotalRooms</span></p></li>
+                                        <li><p><span>@Model.TotalBathrooms</span></p></li>
+                                        <li><p><span>@Model.TotalGarages</span></p></li>
+                                        <li><p><span>@Model.GarageSize @Model.GarageSizePrefix</span></p></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <ul class="list-inline-item">
+                                        <li><p>Property Type :</p></li>
+                                        <li><p>Property Status :</p></li>
+                                    </ul>
+                                    <ul class="list-inline-item">
+                                        <li><p><span>Apartment</span></p></li>
+                                        <li><p><span>For Sale</span></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="additional_details">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="mb15">Additional details</h4>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <ul class="list-inline-item">
+                                        <li><p>Deposit :</p></li>
+                                        <li><p>Pool Size :</p></li>
+                                        <li><p>Additional Rooms :</p></li>
+                                    </ul>
+                                    <ul class="list-inline-item">
+                                        <li><p><span>20%</span></p></li>
+                                        <li><p><span>300 Sqft</span></p></li>
+                                        <li><p><span>Guest Bath</span></p></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <ul class="list-inline-item">
+                                        <li><p>Last remodel year :</p></li>
+                                        <li><p>Amenities :</p></li>
+                                        <li><p>Equipment :</p></li>
+                                    </ul>
+                                    <ul class="list-inline-item">
+                                        <li><p><span>1987</span></p></li>
+                                        <li><p><span>Clubhouse</span></p></li>
+                                        <li><p><span>Grill - Gas</span></p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="property_attachment_area">
+                            <h4 class="mb30">Property Attachments</h4>
+                            <div class="iba_container style2">
+                                @foreach (var d in Model.PropertyDocuments)
+                                {
+                                    string cls = "";
+                                    if (d.EndsWith(".pdf"))
+                                    {
+                                        cls = "flaticon-pdf";
+                                    }
+                                    else if(d.EndsWith(".doc") || d.EndsWith(".docx") || d.EndsWith(".docm"))
+                                    {
+                                        cls = "flaticon-document";
+
+                                    }
+                                    <div class="icon_box_area style2">
+                                        <div class="score"><span class="@cls text-thm fz30"></span></div>
+                                        <div class="details">
+                                            <h5><span class="flaticon-download text-thm pr10"></span> @d </h5>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="col-lg-12">
+                        <div class="application_statics mt30">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h4 class="mb10">Amenities</h4>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    @foreach (var a in Model.Aminities)
+                                    {
+                                        <div class="col-md-4 float-left">
+                                            <ul class="order_list list-inline-item"><li><a><span class="flaticon-tick"></span>@a</a></li></ul>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+

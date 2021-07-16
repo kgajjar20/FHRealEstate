@@ -1,0 +1,5 @@
+
+FTP Address :	FTP.SITE4NOW.NET
+FTP Username :	realestatevidhya-001
+----------------------------------------
+dotnet ef dbcontext scaffold "Server=192.168.43.91;Database=FHRealEstate;Trusted_Connection=True;Integrated Security=False;uid=sa;pwd=Kaushal#123;MultipleActiveResultSets=True" Microsoft.EntityFrameworkCore.SqlServer -c FHRealEstateContext -o DB --data-annotations -f

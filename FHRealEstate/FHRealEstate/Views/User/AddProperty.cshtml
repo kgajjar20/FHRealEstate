@@ -1,0 +1,325 @@
+﻿@model FHRealEstate.Models.AddUpdatePropertyModel
+@{
+    ViewData["Title"] = "Add Property";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="col-lg-12 mb10">
+    <div class="breadcrumb_content style2">
+        <h2 class="breadcrumb_title">Add New Property</h2>
+        <p>We are glad to see you again!</p>
+    </div>
+</div>
+<form method="post" asp-controller="User" asp-action="AddUpdateProperty" id="frmAddUpdateProperty" enctype="multipart/form-data">
+    <div class="col-lg-12">
+        <div class="my_dashboard_review">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="mb30">Create Listing</h4>
+                    <div class="my_profile_setting_input form-group">
+                        <label for="propertyTitle">Property Title <i class="fa fa-asterisk red"></i></label>
+                        <input type="text" asp-for="Title" class="form-control">
+                        <span asp-validation-for="Title" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="my_profile_setting_textarea">
+                        <label for="propertyDescription">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="7"></textarea>
+                        <span asp-validation-for="Description" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input ui_kit_select_search form-group">
+                        <label>Type</label>
+                        <select asp-for="PropertyTypeId" class="selectpicker" data-live-search="true" data-width="100%" asp-items="@(new SelectList(Model.PropertyTypeList,"Value","Text"))"></select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input ui_kit_select_search form-group">
+                        <label>Property Status</label>
+                        <select asp-for="PropertyStatusId" class="selectpicker" data-live-search="true" data-width="100%" asp-items="@(new SelectList(Model.PropertyStatusList,"Value","Text"))"></select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input ui_kit_select_search form-group">
+                        <label>Construction Status</label>
+                        <select asp-for="ConstructionStatusId" class="selectpicker" data-live-search="true" data-width="100%" asp-items="@(new SelectList(Model.ConstructionStatusList,"Value","Text"))"></select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label>Min Price</label>
+                        <input type="text" asp-for="MinPrice" class="form-control">
+                        <span asp-validation-for="MinPrice" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label>Max Price</label>
+                        <input type="text" asp-for="MaxPrice" class="form-control">
+                        <span asp-validation-for="MaxPrice" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label>Property Size</label>
+                        <input asp-for="PropertySize" type="text" class="form-control">
+                        <span asp-validation-for="MaxPrice" class="error"></span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my_dashboard_review mt30">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="mb30">Location</h4>
+                    <div class="my_profile_setting_input form-group">
+                        <label for="propertyAddress">Address</label>
+                        <input asp-for="Address" type="text" class="form-control">
+                        <span asp-validation-for="Address" class="error"></span>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="propertyCity">City</label>
+                        <input asp-for="City" type="text" class="form-control">
+                        <span asp-validation-for="City" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="my_profile_setting_input form-group">
+                        <label>State</label>
+                        <input asp-for="State" type="text" class="form-control">
+                        <span asp-validation-for="State" class="error"></span>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xl-6">
+                    <div class="my_profile_setting_input form-group">
+                        <label>Country</label>
+                        <input asp-for="Country" type="text" class="form-control">
+                        <span asp-validation-for="Country" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-6">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="zipCode">Zip</label>
+                        <input asp-for="Zip" type="text" class="form-control">
+                        <span asp-validation-for="Zip" class="error"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my_dashboard_review mt30">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="mb30">Detailed Information</h4>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="sizePrefix">Size Prefix</label>
+                        <input asp-for="PropertySizePrefix" type="text" value="Sq Ft" class="form-control">
+                        <span asp-validation-for="PropertySizePrefix" class="error"></span>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="bedRooms">Bedrooms</label>
+                        <input asp-for="TotalRooms" type="text" class="form-control">
+                        <span asp-validation-for="TotalRooms" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="bathRooms">Bathrooms</label>
+                        <input asp-for="TotalBathrooms" type="text" class="form-control">
+                        <span asp-validation-for="TotalBathrooms" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="garages">Garages</label>
+                        <input asp-for="TotalGarages" type="text" class="form-control">
+                        <span asp-validation-for="TotalGarages" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="garagesSize">Garages Size</label>
+                        <input type="text" class="form-control" id="garagesSize">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="yearBuild">GarageSize Prefix</label>
+                        <input asp-for="GarageSizePrefix" type="text" value="Sq Ft" class="form-control">
+                        <span asp-validation-for="GarageSizePrefix" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="yearBuild">Year Built</label>
+                        <input asp-for="BuildYear" type="text" class="form-control">
+                        <span asp-validation-for="BuildYear" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="videoUrl">Video URL</label>
+                        <input asp-for="VideoUrl" type="text" class="form-control">
+                        <span asp-validation-for="VideoUrl" class="error"></span>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xl-4">
+                    <div class="my_profile_setting_input form-group">
+                        <label for="virtualTour">360° Virtual Tour</label>
+                        <input asp-for="VirtualTourUrl" type="text" class="form-control" id="virtualTour">
+                        <span asp-validation-for="VirtualTourUrl" class="error"></span>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <h4>Amenities</h4>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <ul class="ui_kit_checkbox selectable-list">
+
+                        @foreach (var x in Model.Aminities)
+                        {
+                            <li style="float:left" class="col-md-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input name="CheckedAminities" value="@x.Value" type="checkbox" class="custom-control-input" id="@x.Text+@x.Value">
+                                    <label class="custom-control-label" for="@x.Text+@x.Value">@x.Text</label>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="my_dashboard_review mt30 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h4 class="mb30">Property media</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <ul class="mb0" id="tblBody_New">
+                            </ul>
+                        </div>
+
+                        <div class="col-xl-6">
+                            <div class="resume_uploader mb30">
+                                <h4>Attachments</h4>
+                                <label class="upload">
+                                    <input name="ImageFiles" onchange="imagesPreview(this,'#tblBody_New')" type="file" id="ImageFiles" multiple class="upload-path">
+                                    Select Attachment
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="my_profile_setting_input">
+                        <button type="button" onclick="SubmitForm()" class="btn btn2 float-right">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    var ImageFilesList = [];
+
+
+    // Multiple images preview in browser
+    function imagesPreview(input, placeToInsertImagePreview) {
+        ImageFilesList = [];
+        $(placeToInsertImagePreview).empty();
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+
+                (function (file) {
+                    var name = file.name;
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML('<li class="list-inline-item" id="' + name + '"><div class="portfolio_item"><img class="img-fluid" src="' + event.target.result + '" alt="fp3.jpg">' +
+                            '<div class="edu_stats_list" data-toggle="tooltip" onclick="Delete(\'' + name + '\')" data-placement="top" title="" data-original-title="Delete"><a><span class="flaticon-garbage"></span></a></div>' +
+                            '</div></li>')).appendTo(placeToInsertImagePreview);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                })(input.files[i]);
+            }
+            ImageFilesList.push(Array.from($('input:file#ImageFiles')[0].files));
+            $('input:file#ImageFiles').val('');
+        }
+    };
+
+    function Delete(filename) {
+        var ind;
+        var files = ImageFilesList;
+        for (var i = 0; i < files[0].length; ++i) {
+            var name = files[0][i].name;
+            if (name === filename) {
+                ind = i;
+                break;
+            }
+        }
+        if (ind !== undefined && ind !== null && ind !== '') {
+            ImageFilesList[0].splice(ind, 1);
+            document.getElementById(filename).remove();
+            $('input:file#ImageFiles').val('');
+        }
+    }
+
+    function SubmitForm() {
+        var form = document.getElementById("frmAddUpdateProperty");
+        debugger;
+        $.validator.setDefaults({ ignore: ":hidden:not(select)" }) //for all select
+        $.validator.unobtrusive.parse(form);
+        debugger;
+        $('form').validate();
+        if ($('form').valid()) {
+            var formData = new FormData(document.getElementById("frmAddUpdateProperty"));
+            for (var i = 0, len = ImageFilesList[0].length; i < len; i++) {
+                formData.append("ImageFiles", ImageFilesList[0][i]);
+            }
+            $.ajax({
+                url: _BaseUrl + "User/AddUpdateProperty",
+                data: formData,
+                processData: false,
+                contentType: false,
+                type: "POST",
+                success: function (res) {
+                    if (res.success === true) {
+                    }
+                    else {
+                        if (res.message !== null && res.message !== undefined && res.message !== '') {
+                            error(res.message);
+                        }
+                        else { error(errorMessage); }
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    var errorMessage = jqXHR.status + ': ' + jqXHR.statusText
+                    error('Error - ' + errorMessage);
+                }
+            });
+        }
+
+    }
+
+
+
+
+
+</script>
