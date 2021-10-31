@@ -63,30 +63,30 @@
                         </li>
                         @if (UserSession.IsAuthenticated)
                         {
-                            <li class="user_setting">
-                                <div class="dropdown menu-active">
-                                    <a class="btn dropdown-toggle btn flaticon-user" href="#" data-toggle="dropdown" aria-expanded="false"><span class="dn-lg ml-1">@UserSession.GetFirstName()</span></a>
-                                    <div class="dropdown-menu" style="">
-                                        <div class="user_set_header">
-                                            <p>@UserSession.GetFirstName()<br><span class="address">@UserSession.GetEmail()</span></p>
-                                        </div>
-                                        <div class="user_setting_content">
-                                            <a class="dropdown-item active" href="#">My Profile</a>
-                                            <a class="dropdown-item" href="#">Messages</a>
-                                            <a class="dropdown-item" href="@Url.Action("Logout","Home")">Log out</a>
-                                        </div>
+                        <li class="user_setting">
+                            <div class="dropdown menu-active">
+                                <a class="btn dropdown-toggle btn flaticon-user" href="#" data-toggle="dropdown" aria-expanded="false"><span class="dn-lg ml-1">@UserSession.GetFirstName()</span></a>
+                                <div class="dropdown-menu" style="">
+                                    <div class="user_set_header">
+                                        <p>@UserSession.GetFirstName()<br><span class="address">@UserSession.GetEmail()</span></p>
+                                    </div>
+                                    <div class="user_setting_content">
+                                        <a class="dropdown-item active" href="#">My Profile</a>
+                                        <a class="dropdown-item" href="#">Messages</a>
+                                        <a class="dropdown-item" href="@Url.Action("Logout","Home")">Log out</a>
                                     </div>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
                         }
                         else
                         {
-                            <li class="list-inline-item list_s"><a href="@Url.Action("Login","Home")" class="btn flaticon-user"> <span class="dn-lg">Login/Register</span></a></li>
+                        <li class="list-inline-item list_s"><a href="@Url.Action("Login","Home")" class="btn flaticon-user"> <span class="dn-lg">Login/Register</span></a></li>
                         }
 
                         @if (UserSession.IsAuthenticated)
                         {
-                            <li class="list-inline-item add_listing"><a asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
+                        <li class="list-inline-item add_listing"><a asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
                         }
                     </ul>
                 </nav>
@@ -100,7 +100,7 @@
                 <div class="header stylehome1">
                     <div class="main_logo_home2 text-center">
                         <img class="nav_logo_img img-fluid mt20" src="~/images/header-logo2.png" alt="header-logo2.png">
-                        <span class="mt20">VidhyaRealEstate</span>
+                        <span class="mt20">Vidhya Real Estate</span>
                     </div>
                     <ul class="menu_bar_home2">
                         <li class="list-inline-item list_s"><a href="page-register.html"><span class="flaticon-user"></span></a></li>
@@ -110,7 +110,7 @@
             </div><!-- /.mobile-menu -->
             <nav id="menu" class="stylehome1">
                 <ul>
-                    <li>
+                    <!--<li>
                         <span>Home</span>
                         <ul>
                             <li><a href="index-2.html">Home 1</a></li>
@@ -219,47 +219,33 @@
                                 </ul>
                             </li>
                             <li><a href="@Url.Action("Aboutus","Home")">About Us</a></li>
-                            <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
-                            <li><a href="page-gallery.html">Gallery</a></li>
-                            <li><a href="page-faq.html">Faq</a></li>
-                            <li><a href="@Url.Action("Login","Home")">LogIn</a></li>
-                            <li><a href="page-compare.html">Membership</a></li>
-                            <li><a href="page-compare2.html">Membership 2</a></li>
-                            <li><a href="page-register.html">Register</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>-->
+                    @*<li><a href="page-gallery.html">Gallery</a></li>
+                        <li><a href="page-faq.html">Faq</a></li>*@
+                    <!--<li><a href="@Url.Action("Login","Home")">LogIn</a></li>-->
+                    @*<li><a href="page-compare.html">Membership</a></li>
+                        <li><a href="page-compare2.html">Membership 2</a></li>*@
+                    <!--<li><a href="page-register.html">Register</a></li>
                             <li><a href="page-service.html">Service</a></li>
                             <li><a href="page-error.html">404 Page</a></li>
                             <li><a href="page-terms.html">Terms and Conditions</a></li>
                             <li><a href="page-ui-element.html">UI Elements</a></li>
                         </ul>
-                    </li>
-                    <li><a href="page-contact.html">Contact</a></li>
+                    </li>-->
+
                     <li><a href="@Url.Action("Login","Home")"><span class="flaticon-user"></span> Login</a></li>
-                    <li><a href="page-register.html"><span class="flaticon-edit"></span> Register</a></li>
-                    <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm circle" asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span> Create Listing</a></li>
+                    <li><a href="@Url.Action("Signup","Home")"><span class="flaticon-edit"></span>Register</a></li>
+                    <li><a href="@Url.Action("Aboutus","Home")">About Us</a></li>
+                    <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
+
+                    @*<li class="cl_btn"><a class="btn btn-block btn-lg btn-thm circle" asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span> Create Listing</a></li>*@
                 </ul>
             </nav>
         </div>
 
         @RenderBody()
 
-        <!-- Start Partners -->
-        <section class="start-partners bgc-thm pt50 pb50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="start_partner tac-smd">
-                            <h2>Become a Real Estate Agent</h2>
-                            <p>We only work with the best companies around the globe</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="parner_reg_btn text-right tac-smd">
-                            <a class="btn btn-thm2" href="#">Register Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Our Footer -->
         <section class="footer_one">
@@ -277,9 +263,9 @@
                             <ul class="list-unstyled">
                                 <li><a href="@Url.Action("Aboutus","Home")">About Us</a></li>
                                 <li><a href="@Url.Action("Contact","Home")">Contact Us</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Support Center</a></li>
-                                <li><a href="#">Press Info</a></li>
+                                @*<li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="#">Press Info</a></li>*@
                             </ul>
                         </div>
                     </div>
@@ -287,11 +273,11 @@
                         <div class="footer_contact_widget">
                             <h4>Contact Us</h4>
                             <ul class="list-unstyled">
-                                <li><a href="#"><span>[email&#160;protected]</span></a></li>
-                                <li><a href="#">Collins Street West, Victoria</a></li>
-                                <li><a href="#">8007, Australia.</a></li>
-                                <li><a href="#">+1 246-345-0699</a></li>
-                                <li><a href="#">+1 246-345-0695</a></li>
+                                <li><a href="#">A-402, Shivalik Satyamev</a></li>
+                                <li><a href="#">Bopal-Ambli</li>
+                                <li><a href="#">380058, India.</a></li>
+                                <li><a href="tel:+918460337099">+91-84603-37099</a></li>
+                                <li><a href="+918128226004">+91-81282-26004</a></li>
                             </ul>
                         </div>
                     </div>
@@ -299,24 +285,20 @@
                         <div class="footer_social_widget">
                             <h4>Follow us</h4>
                             <ul class="mb30">
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.facebook.com/vidhyaarealestate"><i class="fa fa-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="https://www.instagram.com/vidhya_realestate/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
-                            <h4>Subscribe</h4>
-                            <form class="footer_mailchimp_form">
-                                <div class="form-row align-items-center">
-                                    <div class="col-auto">
-                                        <input type="email" class="form-control mb-2" id="inlineFormInput" placeholder="Your email">
+                            @*<h4>Subscribe</h4>
+                                <form class="footer_mailchimp_form">
+                                    <div class="form-row align-items-center">
+                                        <div class="col-auto">
+                                            <input type="email" class="form-control mb-2" id="inlineFormInput" placeholder="Your email">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-angle-right"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-angle-right"></i></button>
-                                    </div>
-                                </div>
-                            </form>
+                                </form>*@
                         </div>
                     </div>
                 </div>
@@ -335,13 +317,14 @@
                                 <li class="list-inline-item"><a href="#">Property</a></li>
                                 <li class="list-inline-item"><a href="#">Pages</a></li>
                                 <li class="list-inline-item"><a href="#">Blog</a></li>
-                                <li class="list-inline-item"><a href="#">Contact</a></li>
+                                <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-xl-6">
                         <div class="copyright-widget text-right">
-                            <p>© @DateTime.Now.Year Vidhya Real Estate. Made with love.</p>
+                            <p>© @DateTime.Now.Year Vidhya Real Estate. Made with respect.</p>
                         </div>
                     </div>
                 </div>
@@ -411,6 +394,11 @@
             }
         });
 
+
+        $(document).ajaxStart(function () {
+            $(".preloader").show();
+        });
+
         $(document).ajaxError(function(event, jqxhr, settings, exception) {
             if (jqxhr.status == 401) {
                 // unauthorized
@@ -419,6 +407,7 @@
         });
 
         $(document).ajaxComplete(function (event, xhr, settings) {
+            $(".preloader").hide();
             if (xhr.status == @((int)System.Net.HttpStatusCode.Unauthorized)) {
                 //login
                 this.location.href = _BaseUrl + "login";

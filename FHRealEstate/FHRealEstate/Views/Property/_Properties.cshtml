@@ -1,0 +1,51 @@
+﻿@model FHRealEstate.Models.PropertiesResponseModel
+
+@foreach (var x in Model.AllProperties)
+{
+    <div class="col-md-6 col-lg-4">
+        <div class="feat_property home7 style4">
+            <div class="thumb">
+                <div class="fp_single_item_slider">
+                    @if (x.PropertyImages != null && x.PropertyImages.Count > 0)
+                    {
+                        @foreach (var img in x.PropertyImages)
+                        {
+                            <div class="item">
+                                <img class="img-whp" src="~/userfiles/@img">
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
+                    }
+                </div>
+                <div class="thmb_cntnt style2">
+                    <ul class="tag mb0">
+                        <li class="list-inline-item"><a href="#">@x.PropertyStatusText</a></li>
+                        <li class="list-inline-item"><a href="#">Featured</a></li>
+                    </ul>
+                </div>
+                <div class="thmb_cntnt style3">
+                    <ul class="icon mb0">
+                        <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
+                        <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
+                    </ul>
+                    <a class="fp_price" style="font-size: 18px !important" href="#">@x.PriceRange</a>
+                </div>
+            </div>
+            <div class="details">
+                <div class="tc_content">
+                    <p class="text-thm">@x.PropertyTypeText</p>
+                    <h4>@x.Title</h4>
+                    <p><span class="flaticon-placeholder"></span>@x.FullAddress</p>
+                    <ul class="prop_details mb0">
+                        <li class="list-inline-item"><a href="#">Beds: @x.TotalRooms</a></li>
+                        <li class="list-inline-item"><a href="#">Baths: @x.TotalBathrooms</a></li>
+                        <li class="list-inline-item"><a href="#">@x.PropertySizePrefix: @x.PropertySize</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}

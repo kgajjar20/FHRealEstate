@@ -31,5 +31,17 @@ namespace FHRealEstate
         }
 
 
+        public enum PropertyStatus : int
+        {
+            [Description("For Buy")]
+            For_Buy = 1,
+            [Description("For Sell")]
+            For_Sell = 2,
+            [Description("For Rent")]
+            For_Rent = 3,
+
+        }
+
+
     }
 }

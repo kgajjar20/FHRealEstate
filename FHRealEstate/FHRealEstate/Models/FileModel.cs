@@ -10,6 +10,7 @@ namespace FHRealEstate.Models
         public Guid? UserId { get; set; }
         public Guid? FileId { get; set; }
         public string FileName { get; set; }
+        public string NewFileName { get; set; }
         public int FileType { get; set; }
     }
 }

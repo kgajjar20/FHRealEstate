@@ -19,15 +19,20 @@ namespace FHRealEstate.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUser _userRepository;
-        public HomeController(ILogger<HomeController> logger, IUser userRepository)
+        private readonly IAdmin _adminRepository;
+        public HomeController(ILogger<HomeController> logger, IUser userRepository, IAdmin adminRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
+            _adminRepository = adminRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            DashboardModel model = new DashboardModel();
+            model.SellPropertiesList = await _adminRepository.GetSellPropertiesForDashboardAsync();
+            model.RentPropertiesList = await _adminRepository.GetRentPropertiesForDashboardAsync();
+            return View(model);
         }
 
         public IActionResult Privacy()

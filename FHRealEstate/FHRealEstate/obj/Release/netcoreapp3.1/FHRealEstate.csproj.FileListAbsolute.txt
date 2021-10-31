@@ -1,6 +1,5 @@
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\appsettings.Development.json
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\appsettings.json
-D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\Properties\launchSettings.json
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\FHRealEstate.exe
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\FHRealEstate.deps.json
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\FHRealEstate.runtimeconfig.json
@@ -400,7 +399,6 @@ D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\n
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.csprojAssemblyReference.cache
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.AssemblyInfoInputs.cache
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.AssemblyInfo.cs
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.csproj.CoreCompileInputs.cache
@@ -438,3 +436,9 @@ D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\n
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.dll
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.pdb
 D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.genruntimeconfig.cache
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\FHRealEstate.csproj.AssemblyReference.cache
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\scopedcss\bundle\FHRealEstate.styles.css
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\Razor\Views\Property\Index.cshtml.g.cs
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\Razor\Views\Property\_Properties.cshtml.g.cs
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\obj\Release\netcoreapp3.1\Razor\Views\User\AddUpdateProperty.cshtml.g.cs
+D:\Web Development\Projects\FHRealEstate\FHRealEstate\FHRealEstate\bin\Release\netcoreapp3.1\web.config

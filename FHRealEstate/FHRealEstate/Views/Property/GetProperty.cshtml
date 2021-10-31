@@ -8,13 +8,13 @@
 <section class="listing-title-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-7 col-xl-8">
+            <div class="col-lg-6 col-xl-6">
                 <div class="single_property_title mt30-767">
                     <h2>@Model.Title</h2>
-                    <p>@Model.Address</p>
+                    <p>@Model.FullAddress</p>
                 </div>
             </div>
-            <div class="col-lg-5 col-xl-4">
+            <div class="col-lg-6 col-xl-6">
                 <div class="single_property_social_share mt20">
                     <div class="spss float-left fn-400">
                         <ul class="mb0">
@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                     <div class="price text-right tal-400">
-                        <h2>Rs.13,000<small>/mo</small></h2>
+                        <h2>@Model.PriceRange</h2>
                     </div>
                 </div>
             </div>
@@ -40,9 +40,9 @@
                 <div class="listing_single_property_slider">
                     @foreach (var x in Model.PropertyImages)
                     {
-                        <div class="item">
-                            <img class="img-fluid" src="~/userfiles/@x" alt="@x">
-                        </div>
+                    <div class="item">
+                        <img class="img-fluid" src="~/userfiles/@x" alt="@x">
+                    </div>
                     }
                 </div>
             </div>
@@ -86,19 +86,7 @@
                                 </ul>
                             </div>
                             <h4 class="mb30">Description</h4>
-                            <p class="mb25">Evans Tower very high demand corner junior one bedroom plus a large balcony boasting full open NYC views. You need to see the views to believe them. Mint condition with new hardwood floors. Lots of closets plus washer and dryer.</p>
-                            <p class="gpara second_para white_goverlay mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body">
-                                    <p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-                                    <p class="mt10 mb10">Fully furnished. Elegantly appointed condominium unit situated on premier location. PS6. The wide entry hall leads to a large living room with dining area. This expansive 2 bedroom and 2 renovated marble bathroom apartment has great windows. Despite the interior views, the apartments Southern and Eastern exposures allow for lovely natural light to fill every room. The master suite is surrounded by handcrafted milkwork and features incredible walk-in closet and storage space.</p>
-                                </div>
-                            </div>
-                            <p class="overlay_close">
-                                <a class="text-thm fz14" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    Show More <span class="flaticon-download-1 fz12"></span>
-                                </a>
-                            </p>
+                            @Html.Raw(Model.Description)
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -120,7 +108,7 @@
                                         <li><p><span>@Model.MinPriceStr</span></p></li>
                                         <li><p><span>@Model.MaxPriceStr</span></p></li>
                                         <li><p><span>@Model.PropertySize @Model.PropertySizePrefix</span></p></li>
-                                        <li><p><span>2016-01-09</span></p></li>
+                                        <li><p><span>@Model.BuildYear</span></p></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xl-4">
@@ -129,12 +117,15 @@
                                         <li><p>Bathrooms :</p></li>
                                         <li><p>Garage :</p></li>
                                         <li><p>Garage Size :</p></li>
+                                        <li></li>
                                     </ul>
                                     <ul class="list-inline-item">
                                         <li><p><span>@Model.TotalRooms</span></p></li>
                                         <li><p><span>@Model.TotalBathrooms</span></p></li>
                                         <li><p><span>@Model.TotalGarages</span></p></li>
                                         <li><p><span>@Model.GarageSize @Model.GarageSizePrefix</span></p></li>
+
+                                        <li></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-xl-4">
@@ -150,39 +141,39 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="additional_details">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h4 class="mb15">Additional details</h4>
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <ul class="list-inline-item">
-                                        <li><p>Deposit :</p></li>
-                                        <li><p>Pool Size :</p></li>
-                                        <li><p>Additional Rooms :</p></li>
-                                    </ul>
-                                    <ul class="list-inline-item">
-                                        <li><p><span>20%</span></p></li>
-                                        <li><p><span>300 Sqft</span></p></li>
-                                        <li><p><span>Guest Bath</span></p></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <ul class="list-inline-item">
-                                        <li><p>Last remodel year :</p></li>
-                                        <li><p>Amenities :</p></li>
-                                        <li><p>Equipment :</p></li>
-                                    </ul>
-                                    <ul class="list-inline-item">
-                                        <li><p><span>1987</span></p></li>
-                                        <li><p><span>Clubhouse</span></p></li>
-                                        <li><p><span>Grill - Gas</span></p></li>
-                                    </ul>
+                    @*<div class="col-lg-12">
+                            <div class="additional_details">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="mb15">Additional details</h4>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <ul class="list-inline-item">
+                                            <li><p>Deposit :</p></li>
+                                            <li><p>Pool Size :</p></li>
+                                            <li><p>Additional Rooms :</p></li>
+                                        </ul>
+                                        <ul class="list-inline-item">
+                                            <li><p><span>20%</span></p></li>
+                                            <li><p><span>300 Sqft</span></p></li>
+                                            <li><p><span>Guest Bath</span></p></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <ul class="list-inline-item">
+                                            <li><p>Last remodel year :</p></li>
+                                            <li><p>Amenities :</p></li>
+                                            <li><p>Equipment :</p></li>
+                                        </ul>
+                                        <ul class="list-inline-item">
+                                            <li><p><span>1987</span></p></li>
+                                            <li><p><span>Clubhouse</span></p></li>
+                                            <li><p><span>Grill - Gas</span></p></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>*@
                     <div class="col-lg-12">
                         <div class="property_attachment_area">
                             <h4 class="mb30">Property Attachments</h4>
@@ -199,12 +190,14 @@
                                         cls = "flaticon-document";
 
                                     }
-                                    <div class="icon_box_area style2">
-                                        <div class="score"><span class="@cls text-thm fz30"></span></div>
-                                        <div class="details">
+                                <div class="icon_box_area style2">
+                                    <div class="score"><span class="@cls text-thm fz30"></span></div>
+                                    <div class="details">
+                                        <a href="~/userfiles/@d">
                                             <h5><span class="flaticon-download text-thm pr10"></span> @d </h5>
-                                        </div>
+                                        </a>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div>
@@ -218,9 +211,9 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     @foreach (var a in Model.Aminities)
                                     {
-                                        <div class="col-md-4 float-left">
-                                            <ul class="order_list list-inline-item"><li><a><span class="flaticon-tick"></span>@a</a></li></ul>
-                                        </div>
+                                    <div class="col-md-4 float-left">
+                                        <ul class="order_list list-inline-item"><li><a><span class="flaticon-tick"></span>@a</a></li></ul>
+                                    </div>
                                     }
 
                                 </div>

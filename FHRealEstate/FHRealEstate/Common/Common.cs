@@ -15,6 +15,20 @@ namespace FHRealEstate
         #endregion
 
 
+        #region
+        public static void WriteLog(string filePath, string log)
+        {
+            string docPath = filePath;
+
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "Log.txt"), true))
+            {
+                outputFile.WriteLine(log);
+            }
+        }
+
+        #endregion
+
+
         #region Save & Get File & Delete file
         #region Save File
         /// <summary>
@@ -25,16 +39,11 @@ namespace FHRealEstate
         /// <returns></returns>
         public static string SaveFile(string filePath, IFormFile file)
         {
-            string filename = "";
-            try
+            string filename = DateTime.Now.Ticks + "_" + file.FileName;
+            using (var fileStream = new FileStream(filePath + "\\" + filename, FileMode.Create, FileAccess.ReadWrite))
             {
-                filename = DateTime.Now.Ticks + "_" + file.FileName;
-                using (var fileStream = new FileStream(filePath + "\\" + filename, FileMode.Create, FileAccess.ReadWrite))
-                {
-                    file.CopyTo(fileStream);
-                }
+                file.CopyTo(fileStream);
             }
-            catch { }
             return filename;
         }
         #endregion
@@ -98,22 +107,47 @@ namespace FHRealEstate
         #endregion
         #endregion
 
-        public static string CustomPrice(decimal price)
+        public static string CustomPrice(decimal price, bool withoutAbbr = false)
         {
             string priceString = "";
 
             if (price >= 10000000)
             {
-                priceString = (price / 10000000) + " Cr";
+                priceString = !withoutAbbr ? (price / 10000000) + " Crore" : Convert.ToString(price / 10000000);
             }
             else if (price >= 100000)
             {
-                priceString = (price / 100000) + " Lacs";
+                priceString = !withoutAbbr ? (price / 100000) + " Lac" : Convert.ToString(price / 100000);
             }
-            else if (price >= 10000)
+            else if (price >= 1000)
             {
-                priceString = (price / 100000) + " K";
+                priceString = !withoutAbbr ? (price / 1000) + " K" : Convert.ToString(price / 1000);
             }
+            return priceString;
+        }
+
+        public static string GetPriceRange(decimal minPrice, decimal maxPrice)
+        {
+
+            bool withoutAbbr = false;
+            if (minPrice >= 10000000 && maxPrice >= 10000000)
+            {
+                withoutAbbr = true;
+            }
+            else if (minPrice >= 100000 && minPrice < 10000000 && maxPrice >= 100000 && maxPrice < 10000000)
+            {
+                withoutAbbr = true;
+            }
+            else if (minPrice >= 1000 && minPrice < 100000 && maxPrice >= 1000 && maxPrice < 100000)
+            {
+                withoutAbbr = true;
+            }
+            else if (minPrice >= 0 && minPrice < 1000 && maxPrice >= 0 && maxPrice < 1000)
+            {
+                withoutAbbr = true;
+            }
+
+            string priceString = $"₹ {CustomPrice(minPrice, withoutAbbr)} - {CustomPrice(maxPrice)}";
             return priceString;
         }
 

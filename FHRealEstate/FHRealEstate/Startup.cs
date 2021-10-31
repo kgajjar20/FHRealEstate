@@ -22,6 +22,7 @@ using FHRealEstate.Repository;
 using FHRealEstate.DB;
 using Microsoft.EntityFrameworkCore;
 using FHRealEstate.Middleware;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace FHRealEstate
 {
@@ -53,6 +54,19 @@ namespace FHRealEstate
 
             services.AddHttpContextAccessor();
             services.AddSession();
+
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.MaxRequestBodySize = int.MaxValue;
+            });
+
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue;
+                x.MultipartHeadersLengthLimit = int.MaxValue;
+            });
+
 
             services.AddControllersWithViews(config =>
             {

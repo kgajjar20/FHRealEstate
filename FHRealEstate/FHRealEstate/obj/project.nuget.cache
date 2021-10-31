@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9awv0Fgswt1fSbUBRyMvkr61iG5GYrpPnGQ+a9U39SK2xtPRGpS16DSdmEHapR8wZYVhvVmQ/oN2hQcQpEvyHA==",
+  "dgSpecHash": "8WumEp7ZMmBanBQs251M/Ku7WhQYx+LKqsh4GmNveWGeMrpspUnRdEtehdj8K24lCezC1ZtOs5+gB3aOQA11BQ==",
   "success": true,
   "projectFilePath": "D:\\Web Development\\Projects\\FHRealEstate\\FHRealEstate\\FHRealEstate\\FHRealEstate.csproj",
   "expectedPackageFiles": [
@@ -174,7 +174,8 @@
     "C:\\Users\\KG-PC\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\KG-PC\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\KG-PC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\KG-PC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\KG-PC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\KG-PC\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.18\\microsoft.netcore.app.host.win-x64.3.1.18.nupkg.sha512"
   ],
   "logs": []
 }

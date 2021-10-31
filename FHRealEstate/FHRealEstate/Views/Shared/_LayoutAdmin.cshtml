@@ -90,7 +90,7 @@
                     <a href="#" class="navbar_brand float-left dn-smd">
                         <img class="logo1 img-fluid" src="~/images/header-logo2.png" alt="header-logo.png">
                         <img class="logo2 img-fluid" src="~/images/header-logo2.png" alt="header-logo2.png">
-                        <span>FindHouse</span>
+                        <span>Vidhya Real Estate</span>
                     </a>
                     <!-- Responsive Menu Structure-->
                     <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
@@ -140,10 +140,10 @@
                 <div class="header stylehome1">
                     <div class="main_logo_home2 text-center">
                         <img class="nav_logo_img img-fluid mt20" src="~/images/header-logo2.png" alt="header-logo2.png">
-                        <span class="mt20">FindHouse</span>
+                        <span class="mt20">Vidhya Real Estate</span>
                     </div>
                     <ul class="menu_bar_home2">
-                        <li class="list-inline-item list_s"><a href="page-register.html"><span class="flaticon-user"></span></a></li>
+                        <li class="list-inline-item list_s"><a href="@Url.Action("Login","Home")"><span class="flaticon-user"></span></a></li>
                         <li class="list-inline-item"><a href="#menu"><span></span></a></li>
                     </ul>
                 </div>
@@ -281,7 +281,7 @@
 
         <div class="dashboard_sidebar_menu dn-992">
             <ul class="sidebar-menu">
-                <li class="header"><img src="~/images/header-logo2.png" alt="header-logo2.png"> FindHouse</li>
+                <li class="header"><img src="~/images/header-logo2.png" alt="header-logo2.png"> Vidhya Real Estate</li>
                 <li class="title"><span>Main</span></li>
                 <li class="treeview"><a href="#"><i class="flaticon-layers"></i><span> Dashboard</span></a></li>
                 <li class="treeview"><a href="page-message.html"><i class="flaticon-envelope"></i><span> Message</span></a></li>
@@ -357,7 +357,7 @@
     <script type="text/javascript">
 
         var commonErrorMessage = "Some error has been occured.Please try again.";
-
+        debugger;
         $(function () {
              if('@ViewBag.SuccessMessage' != 'null' && '@ViewBag.SuccessMessage' != '')
             {
@@ -378,6 +378,10 @@
             }
         });
 
+        $(document).ajaxStart(function () {
+            $(".preloader").show();
+        });
+
         $(document).ajaxError(function(event, jqxhr, settings, exception) {
             if (jqxhr.status == 401) {
                 // unauthorized
@@ -386,6 +390,7 @@
         });
 
         $(document).ajaxComplete(function (event, xhr, settings) {
+            $(".preloader").hide();
             if (xhr.status == @((int)System.Net.HttpStatusCode.Unauthorized)) {
                 //login
                 this.location.href = _BaseUrl + "login";

@@ -100,6 +100,7 @@ namespace FHRealEstate.Models
             Aminities = new List<string>() { };
         }
 
+
         public Guid PropertyId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -113,15 +114,17 @@ namespace FHRealEstate.Models
         public string MinPriceStr => Common.CustomPrice(MinPrice);
         public decimal MaxPrice { get; set; }
         public string MaxPriceStr => Common.CustomPrice(MaxPrice);
+        public string PriceRange => Common.GetPriceRange(MinPrice, MaxPrice);
         public double PropertySize { get; set; }
         public string PropertySizePrefix { get; set; }
         public double? GarageSize { get; set; }
         public string GarageSizePrefix { get; set; }
         public int? TotalRooms { get; set; }
-        public int? TotalGarages { get; set; }
+        public int TotalGarages { get; set; }
         public int? TotalBathrooms { get; set; }
         public int? BuildYear { get; set; }
         public string Address { get; set; }
+        public string FullAddress => $"{Address}, {City}, {State}, {Country} {Zip}";
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
@@ -129,6 +132,7 @@ namespace FHRealEstate.Models
         public string VideoUrl { get; set; }
         public string VirtualTourUrl { get; set; }
         public int Status { get; set; }
+
         public List<string> Aminities { get; set; }
         public List<string> PropertyImages { get; set; }
         public List<string> PropertyDocuments { get; set; }

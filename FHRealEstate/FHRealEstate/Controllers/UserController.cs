@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using FHRealEstate.Helper;
 using FHRealEstate.Models;
 using FHRealEstate.Repository;
 using Microsoft.AspNetCore.Hosting;
@@ -17,11 +18,13 @@ namespace FHRealEstate.Controllers
         private readonly ILogger<UserController> _logger;
         private readonly IAdmin _adminRepository;
         private readonly IWebHostEnvironment _environment;
-        public UserController(ILogger<UserController> logger, IAdmin adminRepository, IWebHostEnvironment environment)
+        private readonly LogHelper _logHelper;
+        public UserController(ILogger<UserController> logger, IAdmin adminRepository, IWebHostEnvironment environment, LogHelper logHelper)
         {
             _logger = logger;
             _adminRepository = adminRepository;
             _environment = environment;
+            _logHelper = logHelper;
         }
 
         public IActionResult Index()
@@ -45,9 +48,10 @@ namespace FHRealEstate.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUpdateProperty(AddUpdatePropertyModel model)
+        [DisableRequestSizeLimit]
+        public async Task<IActionResult> AddUpdateProperty([FromForm] AddUpdatePropertyModel model)
         {
-
+            string message = string.Empty;
             if (ModelState.IsValid)
             {
                 List<FileModel> files = new List<FileModel>() { };
@@ -57,7 +61,8 @@ namespace FHRealEstate.Controllers
                     foreach (var file in model.ImageFiles)
                     {
                         FileModel f = new FileModel();
-                        f.FileName = Common.SaveFile(Path.Combine(_environment.WebRootPath, "userfiles"), file);
+                        f.NewFileName = Common.SaveFile(Path.Combine(_environment.WebRootPath, "userfiles"), file);
+                        f.FileName = file.FileName;
                         f.FileType = (int)PropertyImageType.GalleryImage;
                         files.Add(f);
                     }
@@ -70,7 +75,8 @@ namespace FHRealEstate.Controllers
                     foreach (var file in model.DocumentFiles)
                     {
                         FileModel f = new FileModel();
-                        f.FileName = Common.SaveFile(Path.Combine(_environment.WebRootPath, "userfiles"), file);
+                        f.NewFileName = Common.SaveFile(Path.Combine(_environment.WebRootPath, "userfiles"), file);
+                        f.FileName = file.FileName;
                         f.FileType = (int)PropertyImageType.Documents;
                         files.Add(f);
                     }
@@ -78,11 +84,11 @@ namespace FHRealEstate.Controllers
                 }
 
 
-                bool result = await _adminRepository.AddUpdateProperty(model);
+                bool result = await _adminRepository.AddUpdateProperty(model, files);
                 if (result)
                 {
-                    TempData["SuccessMessage"] = "New Property has been added successfully.";
-                    return RedirectToAction("MyProperties");
+                    message = "New Property has been added successfully.";
+                    return Json(new { Success = result, Message = message });
                 }
                 else
                 {
@@ -90,21 +96,23 @@ namespace FHRealEstate.Controllers
                     #region Delete File
                     files.ForEach(x =>
                     {
-                        string file = Path.Combine(_environment.WebRootPath, "userfiles") + "\\" + x.FileName;
+                        string file = Path.Combine(_environment.WebRootPath, "userfiles") + "\\" + x.NewFileName;
                         Common.DeleteFile(file);
                     });
-
                     #endregion
+                    message = "Some error has been occured.Please try again.";
+                    return Json(new { Success = false, Message = message });
                 }
             }
             else
             {
-                TempData["ErrorMessage"] = string.Join(", ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
-            }
+                message = string.Join(", ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+                return Json(new { Success = false, Message = message });
 
-            return View(model);
+            }
         }
 
+        [HttpGet]
         public IActionResult MyProperties()
         {
             return View();

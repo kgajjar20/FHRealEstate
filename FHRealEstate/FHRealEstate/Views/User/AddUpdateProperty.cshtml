@@ -412,13 +412,16 @@
                 contentType: false,
                 type: "POST",
                 success: function (res) {
+                    debugger;
                     if (res.success === true) {
+                        success(res.message);
+                        setTimeout(function () { window.location.href = _BaseUrl + "User/MyProperties"; }, 1000);
                     }
                     else {
                         if (res.message !== null && res.message !== undefined && res.message !== '') {
                             error(res.message);
                         }
-                        else { error(errorMessage); }
+                        else { error(message); }
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

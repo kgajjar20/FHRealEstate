@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\font\" />
+    <Folder Include="wwwroot\Log\" />
     <Folder Include="wwwroot\userfiles\" />
   </ItemGroup>
 
