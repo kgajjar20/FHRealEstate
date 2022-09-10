@@ -234,38 +234,3 @@
         </div>
     </div>
 </section>
-
-
-    <script type="text/javascript">
-        function DeletePropery(id) {
-            if (confirm("Are you sure you want to delete this property?")) {
-                debugger;
-                $.ajax({
-                    url: _BaseUrl + "User/PropertyDelete",
-                    data: { "id": id },
-                    type: "POST",
-
-                    success: function (res) {
-                        if (res.success === true) {
-                            success("Property has been deleted successfully.");
-                            window.location.href = _BaseUrl + "Home";
-                        }
-                        else {
-                            if (res.message !== null && res.message !== undefined && res.message !== '') {
-                                error(res.message);
-                            }
-                            else {
-                                if (res.errorMessage != '' && res.errorMessage !== null && res.errorMessage !== undefined) {
-                                    error(res.errorMessage);
-                                }
-                            }
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        var errorMessage = jqXHR.status + ': ' + jqXHR.statusText
-                        error('Error - ' + errorMessage);
-                    }
-                });
-            }
-        }
-    </script>

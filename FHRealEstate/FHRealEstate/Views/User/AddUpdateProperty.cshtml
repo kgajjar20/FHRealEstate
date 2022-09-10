@@ -183,9 +183,22 @@
                         <span asp-validation-for="VirtualTourUrl" class="error"></span>
                     </div>
                 </div>
-                <div class="col-xl-12">
-                    <h4>Amenities</h4>
+
+                <div class="row">
+                    <ul class="ui_kit_checkbox selectable-list">
+                        <li style="float:left" class="col-md-12">
+                            <div class="custom-control custom-checkbox">
+                                <input name="CheckUnCheckAll" type="checkbox" onClick="check_uncheck_checkbox(this.checked);" class="custom-control-input" id="CheckUnCheckAll">
+                                <label class="custom-control-label" style="font-size:large" for="CheckUnCheckAll">
+                                   Select All Amenities
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                <br />
+                <br />
+
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <ul class="ui_kit_checkbox selectable-list">
 
@@ -193,7 +206,7 @@
                         {
                             <li style="float:left" class="col-md-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input name="CheckedAminities" value="@x.Value" type="checkbox" class="custom-control-input" id="@x.Text+@x.Value">
+                                    <input name="CheckedAminities" value="@x.Value" type="checkbox" class="custom-control-input chkAminities" id="@x.Text+@x.Value">
                                     <label class="custom-control-label" for="@x.Text+@x.Value">@x.Text</label>
                                 </div>
                             </li>
@@ -430,11 +443,16 @@
                 }
             });
         }
-
     }
-
-
-
-
-
+    function check_uncheck_checkbox(isChecked) {
+        if (isChecked) {
+            $('input[name="CheckedAminities"]').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('input[name="CheckedAminities"]').each(function () {
+                this.checked = false;
+            });
+        }
+    }
 </script>
