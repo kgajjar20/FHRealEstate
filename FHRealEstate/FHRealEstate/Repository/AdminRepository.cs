@@ -22,6 +22,7 @@ namespace FHRealEstate.Repository
         Task<List<TextValueInt>> GetConstructionStatusList();
         Task<bool> AddUpdateProperty(AddUpdatePropertyModel model, List<FileModel> files);
         Task<PropertyModel> GetPropertyAsync(Guid propertyId);
+        Task<bool> DeleteProperty(Guid Id);
     }
 
     public class AdminRepository : IAdmin
@@ -521,6 +522,17 @@ namespace FHRealEstate.Repository
 
         }
 
-
+        public async Task<bool> DeleteProperty(Guid Id)
+        {
+            bool deleted = false;
+            var property = _context.Property.Where(x => x.PropertyId == Id && x.Status != (int)Status.Deleted).FirstOrDefault();
+            if (property != null)
+            {
+                property.Status = (int)Status.Deleted;
+                property.ModifiedDate = DateTime.Now;
+                deleted = await _context.SaveChangesAsync() > 0;
+            }
+            return deleted;
+        }
     }
 }

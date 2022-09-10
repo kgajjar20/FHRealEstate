@@ -60,5 +60,9 @@ namespace FHRealEstate.DB
         public Guid? Modifiedby { get; set; }
         [Column("modifieddate", TypeName = "datetime")]
         public DateTime? Modifieddate { get; set; }
+
+        [Column("isadmin")]
+        public bool IsAdmin { get; set; }
+
     }
 }

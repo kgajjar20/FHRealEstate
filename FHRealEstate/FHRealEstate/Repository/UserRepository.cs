@@ -68,7 +68,8 @@ namespace FHRealEstate.Repository
                     Lastname = user.Lastname,
                     Middlename = user.Middlename ?? string.Empty,
                     Profilephoto = user.Profilephoto,
-                    Status = user.Status
+                    Status = user.Status,
+                    IsAdmin = user.IsAdmin,
                 };
             }
             return response;
@@ -88,6 +89,7 @@ namespace FHRealEstate.Repository
                     Lastname = model.LastName,
                     Passwordhash = _authenticationHelper.GetSaltedHashedText(model.Password, salt),
                     Passwordsalt = salt,
+                    IsAdmin = false,
                 };
                 await _context.User.AddAsync(user);
                 await _context.SaveChangesAsync();

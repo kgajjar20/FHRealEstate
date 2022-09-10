@@ -283,10 +283,8 @@
 
     function SubmitForm() {
         var form = document.getElementById("frmAddUpdateProperty");
-        debugger;
         $.validator.setDefaults({ ignore: ":hidden:not(select)" }) //for all select
         $.validator.unobtrusive.parse(form);
-        debugger;
         $('form').validate();
         if ($('form').valid()) {
             var formData = new FormData(document.getElementById("frmAddUpdateProperty"));

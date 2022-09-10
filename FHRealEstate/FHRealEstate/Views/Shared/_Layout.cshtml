@@ -1,7 +1,9 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
 @using static FHRealEstate.Extensions.UrlExtensions
+
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -63,30 +65,30 @@
                         </li>
                         @if (UserSession.IsAuthenticated)
                         {
-                        <li class="user_setting">
-                            <div class="dropdown menu-active">
-                                <a class="btn dropdown-toggle btn flaticon-user" href="#" data-toggle="dropdown" aria-expanded="false"><span class="dn-lg ml-1">@UserSession.GetFirstName()</span></a>
-                                <div class="dropdown-menu" style="">
-                                    <div class="user_set_header">
-                                        <p>@UserSession.GetFirstName()<br><span class="address">@UserSession.GetEmail()</span></p>
-                                    </div>
-                                    <div class="user_setting_content">
-                                        <a class="dropdown-item active" href="#">My Profile</a>
-                                        <a class="dropdown-item" href="#">Messages</a>
-                                        <a class="dropdown-item" href="@Url.Action("Logout","Home")">Log out</a>
+                            <li class="user_setting">
+                                <div class="dropdown menu-active">
+                                    <a class="btn dropdown-toggle btn flaticon-user" href="#" data-toggle="dropdown" aria-expanded="false"><span class="dn-lg ml-1">@UserSession.GetFirstName()</span></a>
+                                    <div class="dropdown-menu" style="">
+                                        <div class="user_set_header">
+                                            <p>@UserSession.GetFirstName()<br><span class="address">@UserSession.GetEmail()</span></p>
+                                        </div>
+                                        <div class="user_setting_content">
+                                            <a class="dropdown-item active" href="#">My Profile</a>
+                                            <a class="dropdown-item" href="#">Messages</a>
+                                            <a class="dropdown-item" href="@Url.Action("Logout","Home")">Log out</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
                         }
                         else
                         {
-                        <li class="list-inline-item list_s"><a href="@Url.Action("Login","Home")" class="btn flaticon-user"> <span class="dn-lg">Login/Register</span></a></li>
+                            <li class="list-inline-item list_s"><a href="@Url.Action("Login","Home")" class="btn flaticon-user"> <span class="dn-lg">Login/Register</span></a></li>
                         }
 
                         @if (UserSession.IsAuthenticated)
                         {
-                        <li class="list-inline-item add_listing"><a asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
+                            <li class="list-inline-item add_listing"><a asp-action="AddUpdateProperty" asp-controller="User"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
                         }
                     </ul>
                 </nav>
@@ -466,5 +468,6 @@
         }
 
     </script>
+
 </body>
 </html>

@@ -119,6 +119,7 @@ namespace FHRealEstate.Controllers
                       new Claim(ClaimTypes.Email, user.Email),
                       new Claim(Common.FirstNameClaim, user.Firstname),
                       new Claim(Common.LastNameClaim, user.Lastname),
+                      new Claim(Common.IsAdminClaim, user.IsAdmin.ToString()),
             };
 
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

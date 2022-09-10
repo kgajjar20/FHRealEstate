@@ -7,6 +7,7 @@ using FHRealEstate.Helper;
 using FHRealEstate.Models;
 using FHRealEstate.Repository;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using static FHRealEstate.Enumerations;
@@ -19,12 +20,14 @@ namespace FHRealEstate.Controllers
         private readonly IAdmin _adminRepository;
         private readonly IWebHostEnvironment _environment;
         private readonly LogHelper _logHelper;
-        public UserController(ILogger<UserController> logger, IAdmin adminRepository, IWebHostEnvironment environment, LogHelper logHelper)
+        private readonly IHttpContextAccessor _httpContext;
+        public UserController(ILogger<UserController> logger, IAdmin adminRepository, IWebHostEnvironment environment, LogHelper logHelper, IHttpContextAccessor httpContext)
         {
             _logger = logger;
             _adminRepository = adminRepository;
             _environment = environment;
             _logHelper = logHelper;
+            _httpContext = httpContext;
         }
 
         public IActionResult Index()
@@ -119,6 +122,17 @@ namespace FHRealEstate.Controllers
         }
 
 
-
+        [HttpPost]
+        public async Task<IActionResult> PropertyDelete(Guid id)
+        {
+            bool success = false;
+            string message = string.Empty;
+            if (_httpContext.HttpContext.User.Claims.Where(x => x.Type == "IsAdmin" && x.Value.ToLower() == true.ToString().ToLower()).Any())
+            {
+                success = await _adminRepository.DeleteProperty(id);
+                message = success ? "New Property has been deleted successfully." : string.Empty;
+            }
+            return Json(new { Success = success, Message = message });
+        }
     }
 }

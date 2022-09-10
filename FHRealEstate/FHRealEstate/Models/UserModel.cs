@@ -29,6 +29,7 @@ namespace FHRealEstate.Models
         public DateTime? Birthdate { get; set; }
         public bool Displayofficialbadge { get; set; }
         public int Status { get; set; }
+        public bool IsAdmin { get; set; }
         public string FullName => $"{Firstname} {Lastname}";
         public bool RememberMe { get; set; }
     }

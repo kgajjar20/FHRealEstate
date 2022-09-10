@@ -12,6 +12,7 @@ namespace FHRealEstate
         #region Common Constants
         public static readonly string FirstNameClaim = "FirstName";
         public static readonly string LastNameClaim = "LastName";
+        public static readonly string IsAdminClaim = "IsAdmin";
         #endregion
 
 

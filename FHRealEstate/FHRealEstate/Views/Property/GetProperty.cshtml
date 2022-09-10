@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "GetProperty";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var isadmin = this.Context.Request.HttpContext.User.Claims.Where(x => x.Type == "IsAdmin" && x.Value.ToLower() == true.ToString().ToLower()).Any();
+
 }
 
 <section class="listing-title-area">
@@ -18,6 +20,10 @@
                 <div class="single_property_social_share mt20">
                     <div class="spss float-left fn-400">
                         <ul class="mb0">
+                            @if (isadmin)
+                            {
+                                <li class="list-inline-item"><a href="javascript:;" onclick="DeletePropery('@Model.PropertyId')"><span class="fa fa-trash"></span></a></li>
+                            }
                             <li class="list-inline-item"><a href="#"><span class="flaticon-transfer-1"></span></a></li>
                             <li class="list-inline-item"><a href="#"><span class="flaticon-heart"></span></a></li>
                             <li class="list-inline-item"><a href="#"><span class="flaticon-share"></span></a></li>
@@ -40,9 +46,9 @@
                 <div class="listing_single_property_slider">
                     @foreach (var x in Model.PropertyImages)
                     {
-                    <div class="item">
-                        <img class="img-fluid" src="~/userfiles/@x" alt="@x">
-                    </div>
+                        <div class="item">
+                            <img class="img-fluid" src="~/userfiles/@x" alt="@x">
+                        </div>
                     }
                 </div>
             </div>
@@ -185,19 +191,19 @@
                                     {
                                         cls = "flaticon-pdf";
                                     }
-                                    else if(d.EndsWith(".doc") || d.EndsWith(".docx") || d.EndsWith(".docm"))
+                                    else if (d.EndsWith(".doc") || d.EndsWith(".docx") || d.EndsWith(".docm"))
                                     {
                                         cls = "flaticon-document";
 
                                     }
-                                <div class="icon_box_area style2">
-                                    <div class="score"><span class="@cls text-thm fz30"></span></div>
-                                    <div class="details">
-                                        <a href="~/userfiles/@d">
-                                            <h5><span class="flaticon-download text-thm pr10"></span> @d </h5>
-                                        </a>
+                                    <div class="icon_box_area style2">
+                                        <div class="score"><span class="@cls text-thm fz30"></span></div>
+                                        <div class="details">
+                                            <a href="~/userfiles/@d">
+                                                <h5><span class="flaticon-download text-thm pr10"></span> @d </h5>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                         </div>
@@ -211,9 +217,9 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     @foreach (var a in Model.Aminities)
                                     {
-                                    <div class="col-md-4 float-left">
-                                        <ul class="order_list list-inline-item"><li><a><span class="flaticon-tick"></span>@a</a></li></ul>
-                                    </div>
+                                        <div class="col-md-4 float-left">
+                                            <ul class="order_list list-inline-item"><li><a><span class="flaticon-tick"></span>@a</a></li></ul>
+                                        </div>
                                     }
 
                                 </div>
@@ -230,5 +236,36 @@
 </section>
 
 
+    <script type="text/javascript">
+        function DeletePropery(id) {
+            if (confirm("Are you sure you want to delete this property?")) {
+                debugger;
+                $.ajax({
+                    url: _BaseUrl + "User/PropertyDelete",
+                    data: { "id": id },
+                    type: "POST",
 
-
+                    success: function (res) {
+                        if (res.success === true) {
+                            success("Property has been deleted successfully.");
+                            window.location.href = _BaseUrl + "Home";
+                        }
+                        else {
+                            if (res.message !== null && res.message !== undefined && res.message !== '') {
+                                error(res.message);
+                            }
+                            else {
+                                if (res.errorMessage != '' && res.errorMessage !== null && res.errorMessage !== undefined) {
+                                    error(res.errorMessage);
+                                }
+                            }
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        var errorMessage = jqXHR.status + ': ' + jqXHR.statusText
+                        error('Error - ' + errorMessage);
+                    }
+                });
+            }
+        }
+    </script>
